@@ -5,7 +5,7 @@ metadata:
   namespace: go-prometheus
   labels:
     prometheus: go-prometheus
-      release: prometheus
+    release: prometheus
 spec:
   namespaceSelector:
     matchNames:
