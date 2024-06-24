@@ -7,9 +7,6 @@ metadata:
     prometheus: go-prometheus
     release: prometheus
 spec:
-  namespaceSelector:
-    matchNames:
-      - go-prometheus
   selector:
     matchLabels:
       app: go-prometheus
