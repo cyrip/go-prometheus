@@ -16,4 +16,6 @@ WORKDIR /root/
 
 COPY --from=builder /app/go-prometheus .
 
+EXPOSE 8080
+
 CMD ["./go-prometheus"]

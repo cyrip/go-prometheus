@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: go-prometheus-ingress
+  namespace: go-prometheus
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: go-prometheus.codeware.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: go-prometheus-service
+            port:
+              number: 8080
+  - host: go-prometheus.codeware.icu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: go-prometheus-service
+            port:
+              number: 8080
+  tls:
+  - hosts:
+    - go-prometheus.codeware.icu
+    secretName: go-prometheus-public-tls
